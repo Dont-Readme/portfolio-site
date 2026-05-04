@@ -1,0 +1,18 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Project Two thumbnail</title>
+  <desc id="desc">User journey map with priority lanes and collaboration checkpoints.</desc>
+  <rect width="1200" height="750" fill="#F6F1E7"/>
+  <rect x="104" y="100" width="992" height="550" rx="18" fill="#FFFDF7" stroke="#D9D0BF" stroke-width="4"/>
+  <path d="M190 245C300 155 419 332 532 244C646 156 758 332 872 244C927 201 979 204 1030 240" stroke="#146C64" stroke-width="26" stroke-linecap="round"/>
+  <circle cx="190" cy="245" r="34" fill="#B45F3A"/>
+  <circle cx="532" cy="244" r="34" fill="#D5A849"/>
+  <circle cx="872" cy="244" r="34" fill="#1F2426"/>
+  <rect x="170" y="384" width="234" height="96" rx="12" fill="#E8D8BD"/>
+  <rect x="482" y="384" width="234" height="96" rx="12" fill="#DCE7DF"/>
+  <rect x="794" y="384" width="234" height="96" rx="12" fill="#F0D4C4"/>
+  <path d="M210 431H364" stroke="#1F2426" stroke-width="12" stroke-linecap="round" opacity="0.65"/>
+  <path d="M522 431H676" stroke="#1F2426" stroke-width="12" stroke-linecap="round" opacity="0.65"/>
+  <path d="M834 431H988" stroke="#1F2426" stroke-width="12" stroke-linecap="round" opacity="0.65"/>
+  <rect x="170" y="532" width="858" height="28" rx="14" fill="#146C64" opacity="0.18"/>
+  <rect x="170" y="532" width="526" height="28" rx="14" fill="#146C64"/>
+</svg>

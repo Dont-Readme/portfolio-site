@@ -1,0 +1,18 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Project One thumbnail</title>
+  <desc id="desc">Structured project planning board with problem, plan, build, and result blocks.</desc>
+  <rect width="1200" height="750" fill="#FFF8EB"/>
+  <rect x="88" y="86" width="1024" height="578" rx="18" fill="#F7F4EE" stroke="#D9D0BF" stroke-width="4"/>
+  <rect x="150" y="148" width="360" height="120" rx="12" fill="#146C64"/>
+  <rect x="150" y="302" width="900" height="58" rx="10" fill="#FFFFFF" stroke="#D9D0BF" stroke-width="3"/>
+  <rect x="150" y="396" width="250" height="174" rx="12" fill="#EAD8BB"/>
+  <rect x="432" y="396" width="250" height="174" rx="12" fill="#D5A849"/>
+  <rect x="714" y="396" width="250" height="174" rx="12" fill="#B45F3A"/>
+  <circle cx="956" cy="208" r="78" fill="#1F2426"/>
+  <path d="M213 207H445" stroke="#FFF8EB" stroke-width="16" stroke-linecap="round"/>
+  <path d="M213 236H360" stroke="#FFF8EB" stroke-width="16" stroke-linecap="round" opacity="0.75"/>
+  <path d="M202 331H725" stroke="#6F756F" stroke-width="12" stroke-linecap="round"/>
+  <path d="M192 448H348" stroke="#1F2426" stroke-width="12" stroke-linecap="round" opacity="0.65"/>
+  <path d="M474 448H630" stroke="#1F2426" stroke-width="12" stroke-linecap="round" opacity="0.65"/>
+  <path d="M756 448H912" stroke="#1F2426" stroke-width="12" stroke-linecap="round" opacity="0.65"/>
+</svg>

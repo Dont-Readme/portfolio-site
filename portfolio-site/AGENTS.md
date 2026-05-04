@@ -1,0 +1,29 @@
+- 프로젝트명: `portfolio-site`
+- 목적: 이직 지원 시 첨부할 프로젝트 참고용 개인 포트폴리오 사이트를 만든다.
+- 대상 사용자: 채용 담당자.
+- 메뉴는 `Home / About / Projects / Contact`만 사용한다.
+- Resume 페이지, 이력서 PDF 다운로드, 이력서 외부 링크를 만들지 않는다.
+- 로그인, 관리자 페이지, CMS, DB, 백엔드 API, 문의 폼을 만들지 않는다.
+- 기술 스택은 Next.js App Router, TypeScript, Tailwind CSS, MDX, Framer Motion, Vercel 기준이다.
+- `create-next-app --src-dir` 구조를 사용하므로 앱 코드는 `src/` 아래에 둔다.
+- 프로젝트 상세 경로는 `/projects/{slug}` 형식을 사용한다.
+- 프로젝트 상세 콘텐츠는 `src/content/projects/*.mdx`에서 관리한다.
+- 프로젝트 카드 메타데이터는 `src/data/projects.ts`에서 관리한다.
+- 프로젝트 상세 기본 섹션은 아래 8개만 사용한다.
+- 1. 프로젝트 한 줄 요약
+- 2. 배경 / 문제
+- 3. 목표
+- 4. 내 역할
+- 5. 기획 과정
+- 6. 주요 화면 또는 이미지
+- 7. 핵심 기능
+- 8. 결과 / 성과
+- 애니메이션은 Framer Motion으로 구현하되 가독성을 해치지 않는다.
+- Home/About/Projects/Detail/Contact에 부드러운 reveal, hover, fade-in을 적용한다.
+- Figma remote MCP가 가능하면 Figma 프레임 맥락을 우선 반영한다.
+- MCP가 불안정하면 Figma 링크, 캡처, 수동 설명을 기준으로 구현한다.
+- 외부 링크는 새 탭으로 열고 `rel="noreferrer"`를 포함한다.
+- 이미지는 의미 있는 `alt`를 가진다.
+- `.env`는 커밋하지 않고 `.env.example`만 커밋한다.
+- 변경 후 최소 검증 명령어는 `pnpm lint`와 `pnpm build`다.
+- 문서 변경이 필요한 결정이 생기면 `PROJECT_CONTEXT.md`의 Decision Log를 우선 갱신한다.
