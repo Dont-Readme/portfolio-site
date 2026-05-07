@@ -30,7 +30,7 @@ export function Header() {
         <nav
           id="site-menu"
           aria-label="Main navigation"
-          className="mt-3 min-w-40 rounded-sm border border-white/[0.12] bg-[#1b1b1b]/96 p-2 text-right shadow-2xl backdrop-blur"
+          className="mt-3 min-w-36 rounded-sm border border-white/[0.12] bg-[#1b1b1b]/96 p-2 text-left shadow-2xl backdrop-blur"
         >
           {navItems.map((item) => {
             const isActive = item.href === "/about" && pathname === "/about";
@@ -41,7 +41,7 @@ export function Header() {
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 className={[
-                  "block rounded-sm px-3 py-2 text-sm transition",
+                  "block rounded-sm px-3 py-2.5 text-[0.95rem] transition",
                   isActive
                     ? "text-white"
                     : "text-white/[0.58] hover:bg-white/[0.07] hover:text-white",

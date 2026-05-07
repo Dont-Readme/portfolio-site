@@ -1,17 +1,29 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const eliceDXNeolli = localFont({
+  variable: "--font-elice-dx-neolli",
+  display: "swap",
+  src: [
+    {
+      path: "./fonts/EliceDXNeolli-Medium.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/EliceDXNeolli-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/EliceDXNeolli-Bold.ttf",
+      weight: "600 900",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -38,7 +50,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${eliceDXNeolli.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <SiteShell>{children}</SiteShell>

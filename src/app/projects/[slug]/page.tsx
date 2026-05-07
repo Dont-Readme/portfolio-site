@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ProjectDetailLayout } from "@/components/projects/ProjectDetailLayout";
 import { getProjectBySlug, getProjects } from "@/lib/projects";
 
 type ProjectPageProps = {
@@ -40,5 +41,5 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  return <main className="min-h-screen bg-[#1b1b1b]" />;
+  return <ProjectDetailLayout project={project} />;
 }

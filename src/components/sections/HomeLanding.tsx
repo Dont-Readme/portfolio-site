@@ -46,20 +46,24 @@ export function HomeLanding() {
     target: workRef,
     offset: ["start 46%", "start 8%"],
   });
-  const workScale = useTransform(scrollYProgress, [0, 1], [initialWorkScale, 1]);
-  const workOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.58, 0.88, 1]);
+  const workScale = useTransform(
+    scrollYProgress,
+    [0, 0.82, 1],
+    [initialWorkScale, 1, 1],
+  );
+  const workOpacity = useTransform(scrollYProgress, [0, 0.46, 0.82], [0.58, 0.88, 1]);
 
   useEffect(() => {
     const updateInitialScale = () => {
       const viewportWidth = window.innerWidth;
       const horizontalPadding = Math.min(
-        Math.max(viewportWidth * 0.023, 20),
-        52,
+        Math.max(viewportWidth * 0.0345, 30),
+        78,
       ) * 2;
-      const workWidth = Math.max(viewportWidth - horizontalPadding, 1);
       const introWidth = 560;
+      const workWidth = Math.max(viewportWidth - horizontalPadding, 1);
 
-      setInitialWorkScale(Math.min(0.3, Math.max(0.12, introWidth / workWidth)));
+      setInitialWorkScale(Math.min(1, Math.max(0.12, introWidth / workWidth)));
     };
 
     updateInitialScale();
@@ -150,17 +154,17 @@ export function HomeLanding() {
       <section
         ref={workRef}
         id="my-work"
-        className="min-h-[100svh] border-t border-white/[0.055] bg-[#141414]"
+        className="relative min-h-[100svh] border-t border-white/[0.055] bg-[#141414]"
       >
         <motion.div
           style={{
             scale: shouldReduceMotion ? 1 : workScale,
             opacity: shouldReduceMotion ? 1 : workOpacity,
           }}
-          className="mx-auto min-h-[100svh] origin-top bg-[#141414] px-[clamp(1.25rem,2.3vw,3.25rem)] pb-[clamp(1.5rem,3.2vw,3rem)] pt-[clamp(1rem,2vw,2rem)] text-white"
+          className="min-h-[100svh] w-full origin-top bg-[#141414] px-[clamp(1.875rem,3.45vw,4.875rem)] pb-[clamp(1.5rem,3.2vw,3rem)] pt-[clamp(1rem,2vw,2rem)] text-white"
         >
           <div className="flex min-h-[105svh] w-full flex-col justify-center min-[2200px]:min-h-[95svh]">
-            <h2 className="text-[clamp(5rem,11.5vw,11rem)] font-medium leading-[0.86] tracking-normal">
+            <h2 className="text-[clamp(3.4rem,7.2vw,8.2rem)] font-medium leading-[0.86] tracking-normal min-[2200px]:text-[clamp(4.6rem,10.6vw,10.25rem)]">
               My Work
             </h2>
             <div className="mt-[clamp(1.8rem,3.1vw,3.6rem)]">
@@ -168,9 +172,9 @@ export function HomeLanding() {
                 <Link
                   key={project.slug}
                   href={`/projects/${project.slug}`}
-                  className="group grid min-h-[clamp(6.3rem,12.8vh,9.6rem)] grid-cols-[1fr_auto] items-center border-b border-white/[0.28] text-white transition hover:border-white"
+                  className="group grid min-h-[clamp(4.8rem,8.8vh,7.2rem)] grid-cols-[1fr_auto] items-center border-b border-white/[0.28] text-white transition hover:border-white min-[2200px]:min-h-[clamp(6.3rem,12.8vh,9.6rem)]"
                 >
-                  <span className="text-[clamp(2.35rem,4.7vw,5.25rem)] font-normal leading-none">
+                  <span className="text-[clamp(1.65rem,3vw,3.8rem)] font-normal leading-none min-[2200px]:text-[clamp(2.15rem,4.25vw,4.85rem)]">
                     {project.title}
                   </span>
                   <span className="ml-8 text-[clamp(0.68rem,0.78vw,0.9rem)] text-white/[0.54] transition group-hover:text-white">
