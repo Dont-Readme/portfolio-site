@@ -3,7 +3,14 @@ import type { ProjectImage as ProjectImageData, ProjectMeta } from "@/data/proje
 import { ProjectImage } from "@/components/projects/ProjectImage";
 
 type InlineProjectImage = ProjectImageData & {
-  variant?: "default" | "immersive" | "screen";
+  variant?:
+    | "default"
+    | "immersive"
+    | "screen"
+    | "screenBalanced"
+    | "screenCompact"
+    | "screenLandscape"
+    | "wide";
 };
 
 type ProjectDetailLayoutProps = {
@@ -12,15 +19,53 @@ type ProjectDetailLayoutProps = {
 
 export function ProjectDetailLayout({ project }: ProjectDetailLayoutProps) {
   const { detail } = project;
-  const idsAnalysisScreen: InlineProjectImage | undefined =
-    project.slug === "IDS"
-      ? {
-          alt: "IDS customer complaint analysis screen",
-          src: "/images/projects/Hyundai-IDS/ids-image.png",
-          caption: "고객 불만 분석 화면",
-          variant: "screen",
-        }
-      : undefined;
+  const projectScreenImages: Record<string, InlineProjectImage> = {
+    IDS: {
+      alt: "IDS customer complaint analysis screen",
+      src: "/images/projects/Hyundai-IDS/ids-image.png",
+      caption: "고객 불만 기획 화면",
+      variant: "screen",
+    },
+    ABB: {
+      alt: "ABB health report example screen",
+      caption: "건강 리포트 기획 화면",
+      src: "/images/projects/ABB/health-report-screen.png",
+      variant: "screenCompact",
+    },
+    complaint: {
+      alt: "Complaint disaster safety monitoring screen",
+      src: "/images/projects/complaint/monitoring-screen.png",
+      caption: "위험 민원 모니터링 화면",
+      variant: "screenBalanced",
+    },
+    "proposal-auto": {
+      alt: "Proposal automation prototype screen",
+      src: "/images/projects/proposal-auto/prototype-screen.png",
+      caption: "제안서 자동화 프로토타입 화면",
+      variant: "screenBalanced",
+    },
+  };
+  const projectEvidenceImages: Record<string, InlineProjectImage> = {
+    ABB: {
+      alt: "ABB field validation activity image",
+      src: "/images/projects/ABB/field-validation.png",
+      caption: "실증 운영 수행 이미지",
+      variant: "wide",
+    },
+    complaint: {
+      alt: "Complaint monitoring process image",
+      src: "/images/projects/complaint/monitoring-screen2.png",
+      caption: "위험 민원 모니터링 화면",
+      variant: "wide",
+    },
+  };
+  const projectScreenImage = projectScreenImages[project.slug];
+  const projectEvidenceImage = projectEvidenceImages[project.slug];
+  const shouldMergeOverviewSections =
+    project.slug === "IDS" ||
+    project.slug === "ABB" ||
+    project.slug === "complaint" ||
+    project.slug === "proposal-auto";
 
   return (
     <main className="min-h-screen bg-white text-black">
@@ -48,17 +93,17 @@ export function ProjectDetailLayout({ project }: ProjectDetailLayoutProps) {
 
         <div className="mt-[clamp(4rem,7vw,7rem)] space-y-[clamp(4rem,6vw,6rem)]">
           {detail.sections.map((section, sectionIndex) => {
-            const isIdsIntroBlock = project.slug === "IDS" && sectionIndex === 0;
-            const isMergedIdsSection = project.slug === "IDS" && sectionIndex === 1;
-            const displayedSections = isIdsIntroBlock
+            const isMergedIntroBlock = shouldMergeOverviewSections && sectionIndex === 0;
+            const isMergedSection = shouldMergeOverviewSections && sectionIndex === 1;
+            const displayedSections = isMergedIntroBlock
               ? detail.sections.slice(0, 2)
               : [section];
             const sectionMedia: InlineProjectImage[] = [
-              ...(idsAnalysisScreen && sectionIndex === 0 ? [idsAnalysisScreen] : []),
+              ...(projectScreenImage && sectionIndex === 0 ? [projectScreenImage] : []),
               ...displayedSections.flatMap((displayedSection) => displayedSection.media ?? []),
             ];
 
-            if (isMergedIdsSection) {
+            if (isMergedSection) {
               return null;
             }
 
@@ -101,13 +146,26 @@ export function ProjectDetailLayout({ project }: ProjectDetailLayoutProps) {
                       src={image.src}
                       alt={image.alt}
                       caption={image.caption}
-                      className="mt-0"
+                      className={
+                        image.variant === "screenCompact"
+                          ? "ml-0 mt-0 w-full max-w-[clamp(18rem,28vw,30rem)]"
+                          : "mt-0"
+                      }
                       variant={image.variant}
                     />
                   ))}
                 </div>
               ) : null}
             </section>
+            {projectEvidenceImage && sectionIndex === 0 ? (
+              <ProjectImage
+                src={projectEvidenceImage.src}
+                alt={projectEvidenceImage.alt}
+                caption={projectEvidenceImage.caption}
+                className="mt-[clamp(2rem,3.2vw,3.5rem)] w-full max-w-[1100px]"
+                variant={projectEvidenceImage.variant}
+              />
+            ) : null}
             {displayedSections.map((displayedSection) =>
               displayedSection.featureMedia ? (
               <ProjectImage

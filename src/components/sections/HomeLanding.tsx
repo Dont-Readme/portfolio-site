@@ -35,7 +35,7 @@ const certifications = [
   },
 ];
 
-const profileImagePath = "/images/profile/profile.jpg";
+const profileImagePath = "/images/profile/profile2.png";
 
 export function HomeLanding() {
   const workRef = useRef<HTMLElement>(null);
