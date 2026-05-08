@@ -4,6 +4,13 @@ import { SiteShell } from "@/components/layout/SiteShell";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
+const defaultOgImage = {
+  url: "/images/social/portfolio-og.png",
+  width: 1200,
+  height: 630,
+  alt: "Portfolio project preview",
+};
+
 const eliceDXNeolli = localFont({
   variable: "--font-elice-dx-neolli",
   display: "swap",
@@ -33,12 +40,27 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+  },
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
     type: "website",
+    locale: "ko_KR",
+    images: [defaultOgImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [defaultOgImage.url],
   },
 };
 
