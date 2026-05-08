@@ -32,41 +32,6 @@ export type ProjectDetail = {
   additionalMedia?: ProjectImage[];
 };
 
-const defaultDiagram = (projectTitle: string): ProjectImage => ({
-  alt: `${projectTitle} 데이터 수집 처리 및 구조 그림`,
-  caption: "데이터 수집 처리 및 구조 그림",
-});
-
-function createPlaceholderDetail(projectTitle: string): ProjectDetail {
-  return {
-    intro: [
-      `${projectTitle}의 프로젝트 개요를 작성하는 영역입니다.`,
-      "프로젝트의 문제 정의, 데이터 흐름, 기획 및 수행 내용을 채용 담당자가 빠르게 이해할 수 있도록 정리합니다.",
-    ],
-    diagram: defaultDiagram(projectTitle),
-    sections: [
-      {
-        title: "프로젝트의 문제 정의와 배경을 정리하였습니다.",
-        body: [
-          "프로젝트를 시작하게 된 배경, 해결하려는 사용자 또는 비즈니스 문제, 기존 방식의 한계를 작성하는 영역입니다.",
-        ],
-      },
-      {
-        title: "목표와 핵심 과제를 도출하였습니다.",
-        body: [
-          "프로젝트에서 달성하려는 목표와 이를 위해 우선순위로 삼은 핵심 과제를 작성하는 영역입니다.",
-        ],
-      },
-      {
-        title: "기획 및 실행 과정에서 담당 역할을 수행하였습니다.",
-        body: [
-          "본인이 맡은 역할, 의사결정 과정, 협업 범위, 산출물과 실행 내용을 작성하는 영역입니다.",
-        ],
-      },
-    ],
-  };
-}
-
 export const projects: ProjectMeta[] = [
   {
     title: "현대자동차 IDS 구축 및 운영",
@@ -292,16 +257,5 @@ export const projects: ProjectMeta[] = [
         },
       ],
     },
-  },
-  {
-    title: "예시",
-    slug: "aa",
-    summary: "대표 프로젝트 소개를 준비 중입니다.",
-    period: "2026",
-    role: "Strategy",
-    category: "",
-    tags: ["Strategy"],
-    order: 5,
-    detail: createPlaceholderDetail("예시"),
   },
 ];
