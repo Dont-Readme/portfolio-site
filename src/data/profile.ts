@@ -23,7 +23,7 @@ export type About = {
 };
 
 export const profile: Profile = {
-  name: "Your Name",
+  name: "김동민",
   position: "Product-minded Planner / PM Portfolio",
   headline:
     "문제 정의에서 화면 기획, 구현 협업, 결과 정리까지 프로젝트의 흐름을 설계하는 포트폴리오입니다.",
