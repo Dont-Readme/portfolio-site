@@ -13,6 +13,25 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const isHomePage = pathname === "/";
+  const isProjectDetailPage = pathname.startsWith("/projects/");
+
+  if (isHomePage) {
+    return null;
+  }
+
+  if (isProjectDetailPage) {
+    return (
+      <header className="absolute right-6 top-5 z-50 sm:right-10 sm:top-8">
+        <Link
+          href="/#top"
+          className="text-xs font-medium text-black/55 transition hover:text-black"
+        >
+          Home
+        </Link>
+      </header>
+    );
+  }
 
   return (
     <header className="fixed right-6 top-5 z-50 sm:right-10 sm:top-8">

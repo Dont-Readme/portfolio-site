@@ -1,5 +1,10 @@
 import { Fragment } from "react";
-import type { ProjectImage as ProjectImageData, ProjectMeta } from "@/data/projects";
+import Link from "next/link";
+import {
+  projects,
+  type ProjectImage as ProjectImageData,
+  type ProjectMeta,
+} from "@/data/projects";
 import { ProjectImage } from "@/components/projects/ProjectImage";
 
 type InlineProjectImage = ProjectImageData & {
@@ -19,6 +24,18 @@ type ProjectDetailLayoutProps = {
 
 export function ProjectDetailLayout({ project }: ProjectDetailLayoutProps) {
   const { detail } = project;
+  const representativeProjects = [...projects]
+    .sort((a, b) => a.order - b.order)
+    .slice(0, 4);
+  const currentProjectIndex = representativeProjects.findIndex(
+    (item) => item.slug === project.slug,
+  );
+  const previousProject =
+    currentProjectIndex > 0 ? representativeProjects[currentProjectIndex - 1] : null;
+  const nextProject =
+    currentProjectIndex >= 0 && currentProjectIndex < representativeProjects.length - 1
+      ? representativeProjects[currentProjectIndex + 1]
+      : null;
   const projectScreenImages: Record<string, InlineProjectImage> = {
     IDS: {
       alt: "IDS customer complaint analysis screen",
@@ -68,7 +85,23 @@ export function ProjectDetailLayout({ project }: ProjectDetailLayoutProps) {
     project.slug === "proposal-auto";
 
   return (
-    <main className="min-h-screen bg-white text-black">
+    <main className="relative min-h-screen bg-white text-black">
+      {previousProject ? (
+        <Link
+          href={`/projects/${previousProject.slug}`}
+          className="absolute left-6 top-5 z-40 text-xs font-medium text-black/48 transition duration-200 hover:-translate-x-1 hover:text-black sm:left-10 sm:top-8"
+        >
+          &lt; {previousProject.title}
+        </Link>
+      ) : null}
+      {nextProject ? (
+        <Link
+          href={`/projects/${nextProject.slug}`}
+          className="absolute bottom-6 right-6 z-40 text-xs font-medium text-black/48 transition duration-200 hover:translate-x-1 hover:text-black sm:bottom-8 sm:right-10 sm:text-sm"
+        >
+          &gt; {nextProject.title}
+        </Link>
+      ) : null}
       <article className="w-full px-[clamp(4.25rem,5.4vw,7rem)] pb-28 pt-[clamp(3.5rem,5vw,5.5rem)]">
         <header>
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-black/45">
