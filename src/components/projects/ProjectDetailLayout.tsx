@@ -115,6 +115,16 @@ export function ProjectDetailLayout({ project }: ProjectDetailLayoutProps) {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
+          {project.slug === "proposal-auto" ? (
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/projects/proposal-auto/demo"
+                className="inline-flex min-h-12 items-center justify-center border border-[#1f7a68] bg-[#1f7a68] px-5 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:border-[#176452] hover:bg-[#176452]"
+              >
+                데모 보기
+              </Link>
+            </div>
+          ) : null}
         </header>
 
         <ProjectImage

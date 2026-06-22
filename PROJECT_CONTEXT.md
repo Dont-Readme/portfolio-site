@@ -34,6 +34,7 @@
 15. Home은 검은 메인 영역, 확대 진입하는 흰색 My Work 영역, 검은 Contact 영역이 스크롤로 이어지는 단일 페이지로 구성한다.
 16. 우측 상단 `Menu`는 Home, About, Projects만 제공하고, Projects는 Home의 `#my-work` 섹션으로 이동한다.
 17. About 페이지와 프로젝트 상세 페이지는 디자인 확정 전까지 빈 페이지로 둔다.
+18. 제안서 자동화 프로젝트의 1차 데모는 백엔드/API 없이 RFP Copilot의 페이지 구조를 반영하고, GitHub에 남아 있던 export preview와 planner cache 실행 결과를 화면용 데이터로 옮긴 앱형 데모로 구현한다.
 
 ## 4. 현재 상태 요약
 
