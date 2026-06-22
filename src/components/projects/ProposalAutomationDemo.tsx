@@ -115,10 +115,7 @@ export function ProposalAutomationDemo() {
         <div className="grid min-h-[calc(100vh-7.5rem)] border border-black/10 bg-[#f8f8f4] shadow-[0_30px_100px_rgba(15,20,15,0.12)] lg:grid-cols-[17rem_minmax(0,1fr)]">
           <aside className="border-b border-black/10 bg-[#10140f] text-white lg:border-b-0 lg:border-r">
             <div className="border-b border-white/10 px-5 py-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/42">
-                {proposalDemo.app.mode}
-              </p>
-              <h1 className="mt-2 text-2xl font-semibold leading-none">
+              <h1 className="text-2xl font-semibold leading-none">
                 {proposalDemo.app.name}
               </h1>
               <p className="mt-3 text-sm leading-6 text-white/58">
