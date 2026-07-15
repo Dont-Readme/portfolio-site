@@ -15,8 +15,9 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const isHomePage = pathname === "/";
   const isProjectDetailPage = pathname.startsWith("/projects/");
+  const isStandaloneDemoPage = pathname === "/ai-coach-demo";
 
-  if (isHomePage) {
+  if (isHomePage || isStandaloneDemoPage) {
     return null;
   }
 

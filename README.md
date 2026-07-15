@@ -50,8 +50,14 @@ NEXT_PUBLIC_CONTACT_EMAIL="your-email@example.com"
 
 ```bash
 pnpm lint
+pnpm typecheck
+pnpm test
 pnpm build
 ```
+
+## AI 학습 코치 데모
+
+과제 면접용 알고리즘 데모는 `/ai-coach-demo`로 직접 접속한다. 실행 방식, 합성 데이터, OpenAI 서버 환경변수와 검증 명령은 [`docs/AI_COACH_DEMO.md`](docs/AI_COACH_DEMO.md)에 정리되어 있다.
 
 ## 7. 폴더 구조 요약
 

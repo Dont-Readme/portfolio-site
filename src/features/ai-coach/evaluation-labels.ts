@@ -1,0 +1,135 @@
+import type {
+  ContentId,
+  EvaluationLabel,
+  FitGrade,
+  UserId,
+} from "./types";
+
+// Evaluation-only gold data. Prompt construction must never import this module.
+// The judgments and rationales are maintained in AI_학습_코치_라벨링_93건.xlsx.
+type EvaluationLabelTuple = readonly [
+  userId: UserId,
+  contentId: ContentId,
+  personalFitGold: FitGrade,
+  ndcgRelevance: 0 | 1 | 2 | 3,
+];
+
+const rubricJudgedLabels = [
+  ["user-01", "content-01", "high", 3],
+  ["user-01", "content-02", "high", 2],
+  ["user-01", "content-03", "high", 2],
+  ["user-01", "content-05", "high", 2],
+  ["user-01", "content-11", "high", 2],
+  ["user-01", "content-12", "high", 2],
+  ["user-01", "content-13", "high", 2],
+  ["user-01", "content-15", "high", 2],
+  ["user-01", "content-21", "medium", 1],
+  ["user-01", "content-22", "low", 1],
+  ["user-02", "content-06", "high", 3],
+  ["user-02", "content-07", "high", 3],
+  ["user-02", "content-09", "high", 3],
+  ["user-02", "content-10", "high", 3],
+  ["user-02", "content-16", "high", 2],
+  ["user-02", "content-17", "high", 2],
+  ["user-02", "content-18", "high", 2],
+  ["user-02", "content-20", "high", 2],
+  ["user-02", "content-26", "medium", 1],
+  ["user-02", "content-27", "medium", 1],
+  ["user-03", "content-31", "medium", 2],
+  ["user-03", "content-32", "high", 3],
+  ["user-03", "content-33", "high", 3],
+  ["user-03", "content-35", "medium", 2],
+  ["user-03", "content-36", "medium", 2],
+  ["user-03", "content-37", "high", 2],
+  ["user-03", "content-38", "high", 3],
+  ["user-03", "content-39", "medium", 1],
+  ["user-03", "content-40", "medium", 2],
+  ["user-03", "content-21", "low", 0],
+  ["user-04", "content-01", "high", 3],
+  ["user-04", "content-02", "medium", 2],
+  ["user-04", "content-03", "high", 3],
+  ["user-04", "content-04", "medium", 2],
+  ["user-04", "content-05", "high", 3],
+  ["user-04", "content-21", "high", 3],
+  ["user-04", "content-22", "medium", 2],
+  ["user-04", "content-23", "high", 3],
+  ["user-04", "content-24", "medium", 2],
+  ["user-04", "content-25", "high", 3],
+  ["user-05", "content-17", "high", 3],
+  ["user-05", "content-18", "medium", 2],
+  ["user-05", "content-20", "medium", 2],
+  ["user-05", "content-07", "high", 2],
+  ["user-05", "content-09", "high", 2],
+  ["user-05", "content-10", "medium", 1],
+  ["user-05", "content-27", "high", 3],
+  ["user-05", "content-28", "medium", 2],
+  ["user-05", "content-29", "high", 3],
+  ["user-05", "content-30", "medium", 2],
+  ["user-06", "content-31", "high", 2],
+  ["user-06", "content-32", "high", 2],
+  ["user-06", "content-33", "high", 3],
+  ["user-06", "content-35", "high", 3],
+  ["user-06", "content-36", "high", 2],
+  ["user-06", "content-37", "high", 2],
+  ["user-06", "content-38", "high", 3],
+  ["user-06", "content-39", "medium", 1],
+  ["user-06", "content-40", "high", 2],
+  ["user-06", "content-21", "medium", 1],
+  ["user-07", "content-26", "high", 2],
+  ["user-07", "content-27", "high", 2],
+  ["user-07", "content-28", "medium", 2],
+  ["user-07", "content-29", "high", 3],
+  ["user-07", "content-30", "high", 3],
+  ["user-07", "content-01", "high", 2],
+  ["user-07", "content-02", "high", 2],
+  ["user-07", "content-03", "medium", 2],
+  ["user-07", "content-04", "high", 3],
+  ["user-07", "content-05", "high", 3],
+  ["user-08", "content-11", "high", 3],
+  ["user-08", "content-12", "medium", 1],
+  ["user-08", "content-13", "high", 2],
+  ["user-08", "content-15", "high", 3],
+  ["user-08", "content-01", "high", 2],
+  ["user-08", "content-02", "medium", 1],
+  ["user-08", "content-03", "high", 2],
+  ["user-08", "content-05", "high", 2],
+  ["user-08", "content-26", "medium", 0],
+  ["user-08", "content-27", "low", 0],
+  ["user-09", "content-35", "medium", 2],
+  ["user-09", "content-02", "medium", 0],
+  ["user-09", "content-09", "low", 0],
+  ["user-10", "content-21", "high", 2],
+  ["user-10", "content-22", "medium", 2],
+  ["user-10", "content-23", "high", 3],
+  ["user-10", "content-24", "medium", 2],
+  ["user-10", "content-25", "high", 3],
+  ["user-10", "content-11", "medium", 2],
+  ["user-10", "content-12", "medium", 1],
+  ["user-10", "content-14", "medium", 1],
+  ["user-10", "content-15", "medium", 2],
+  ["user-10", "content-31", "high", 3],
+] satisfies readonly EvaluationLabelTuple[];
+
+export const evaluationLabels: EvaluationLabel[] = rubricJudgedLabels.map(
+  ([userId, contentId, personalFitGold, ndcgRelevance]) => ({
+    userId,
+    contentId,
+    personalFitGold,
+    ndcgRelevance,
+    source: "rubric_judged_synthetic",
+  }),
+);
+
+export function getEvaluationLabelsForUser(
+  userId: UserId,
+): EvaluationLabel[] {
+  return evaluationLabels.filter((label) => label.userId === userId);
+}
+
+const uniqueLabelIds = new Set(
+  evaluationLabels.map((label) => `${label.userId}__${label.contentId}`),
+);
+
+if (evaluationLabels.length !== 93 || uniqueLabelIds.size !== 93) {
+  throw new Error("AI coach rubric-judged evaluation labels must contain 93 unique pairs.");
+}
